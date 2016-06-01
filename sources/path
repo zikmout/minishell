@@ -1,0 +1,68 @@
+builtins.c:	if (check_var_env(e->cmd[1]))
+builtins.c:	else if (e->cmd[1] != NULL)
+builtins.c:		set_var_env(e->cmd[1], e->cmd[2], e);
+builtins.c:	if (unset_var_env(e->cmd[1], e) == 0)
+builtins.c:		ft_printf("setenv: la variable '%s' est introuvable\n", e->cmd[1]);
+builtins.c:	if (e->cmd[1] && ft_strcmp(e->cmd[1], "-i") == 0)
+builtins.c:		free_env(e->envp);
+builtins.c:	else if (e->cmd[1] == NULL)
+builtins.c:		while (e->envp[i])
+builtins.c:			ft_printf("%s\n", e->envp[i]);
+builtins.c:		if (ft_strcmp(e->cmd[0], g_builtin_str[i]) == 0)
+builtins2.c:	if (e->sh_status == 0)
+builtins2.c:		e->sh_status = 1;
+builtins2.c:		e->sh_status = 0;
+cd_pwd.c:	if (ft_strncmp(e->cmd[1], "-", 1) == 0)
+cd_pwd.c:	else if (ft_strncmp(e->cmd[1], "~/", 2) == 0
+cd_pwd.c:			|| e->cmd[1][0] == '~')
+cd_pwd.c:	else if (ft_strcmp(e->cmd[1], "/") == 0)
+cd_pwd.c:		pwd = ft_strjoin(pwd, e->cmd[1]);
+cd_pwd.c:	if (!e->cmd[1])
+cd_pwd.c:		set_var_env("OLDPWD", e->cur_path, e);
+cd_pwd.c:		e->get_pwd = 0;
+cd_pwd.c:		ft_printf("cd: not a directory: %s\n", e->cmd[1]);
+cd_pwd.c:		ft_printf("cd: no such file or directory: %s\n", e->cmd[1]);
+cd_pwd.c:	if (e->get_pwd == 1)
+cd_pwd.c:		while (e->envp[i])
+cd_pwd.c:			if (ft_strncmp(e->envp[i], "PWD=", 4) == 0)
+cd_pwd.c:				cur_path = ft_strsub(e->envp[i], 4, ft_strlen(e->envp[i]) - 4);
+cd_pwd.c:		e->cur_path = ft_strdup(cur_path);
+cd_pwd.c:		e->get_pwd = 1;
+struct.c:	while (e->envp[i])
+struct.c:		if (ft_strncmp(e->envp[i], "PATH=", 5) == 0)
+struct.c:			tmp = ft_strsub(e->envp[i], 5, ft_strlen(e->envp[i]) - 5);
+struct.c:		e->envp = env_cpy(envp, 0, 0);
+struct.c:		e->path = get_env(e);
+struct.c:		e->envp = tab;
+struct.c:		e->path = NULL;
+struct.c:	e->get_pwd = 1;
+struct.c:	e->child_pid = 0;
+struct.c:	e->sh_status = 0;
+tools.c:		execve(e->cmd[0], e->cmd, e->envp);
+tools.c:	e->name = ft_strdup(e->cmd[0]);
+tools.c:	while (e->path[++i])
+tools.c:		e->cmd[0] = ft_strjoin(e->path[i], e->cmd[0]);
+tools.c:		if (access(e->cmd[0], F_OK) == 0)
+tools.c:		free(e->cmd[0]);
+tools.c:		e->cmd[0] = ft_strdup(e->name);
+tools.c:		ft_printf("sh1: command not found: %s\n", e->name);
+tools.c:	if (WIFEXITED(status) && e->sh_status)
+tools.c:	if (WIFSIGNALED(status) && e->sh_status)
+tools.c:	if (access(e->cmd[0], X_OK) != 0)
+tools.c:				ft_strsub(e->cmd[0], 2, ft_strlen(e->cmd[0])));
+var_env.c:	while (e->envp[i])
+var_env.c:		if (ft_strncmp(e->envp[i], var, len) == 0)
+var_env.c:			value = ft_strsub(e->envp[i], len + 1, ft_strlen(e->envp[i]) - len);
+var_env.c:	while (e->envp[i])
+var_env.c:		if (ft_strncmp(e->envp[i], var_name, len) == 0)
+var_env.c:			free(e->envp[i]);
+var_env.c:			e->envp[i] = ft_strdup("TO_UNSET");
+var_env.c:		while (e->envp[i + j])
+var_env.c:			if (ft_strcmp(e->envp[i], "TO_UNSET") == 0)
+var_env.c:			new_env[i] = ft_strdup(e->envp[i + j]);
+var_env.c:		e->envp = new_env;
+var_env.c:	while (e->envp[++i])
+var_env.c:		if (ft_strncmp(e->envp[i], var_name, len) == 0)
+var_env.c:		e->envp[i] = new_env_line;
+var_env.c:		e->envp = env_cpy(e->envp, 1, 1);
+var_env.c:		e->envp[i] = new_env_line;
